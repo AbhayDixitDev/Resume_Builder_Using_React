@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ThemeSelection from './Components/ThemeSelection';
 import ResumeForm from './Components/ResumeForm';
 import ResumePreview from './Components/ResumePreview';
+import "./style.css"
 
 const App = () => {
   const [selectedTheme, setSelectedTheme] = useState(null);

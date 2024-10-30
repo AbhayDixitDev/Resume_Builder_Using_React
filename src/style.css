@@ -1,0 +1,151 @@
+/* styles.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+/* Container for the app */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Form styles */
+form {
+    margin: 20px 0;
+}
+
+form h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #007bff;
+}
+
+form input, form textarea {
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #00c6ff;
+    outline: none;
+}
+
+form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Theme selection styles */
+.theme-selection {
+    text-align: center;
+}
+
+.theme-selection button {
+    margin: 10px;
+    padding: 15px 25px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.theme-selection button:hover {
+    background: #0056b3;
+}
+
+/* Resume Preview styles */
+.resume-preview {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.resume-preview h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.resume-preview h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.resume-preview h3 {
+    font-size: 22px;
+    margin-top: 15px;
+    color: #007bff;
+}
+
+.resume-preview p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.resume-preview a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.resume-preview a:hover {
+    text-decoration: underline;
+}
+
+.resume-preview button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.resume-preview button:hover {
+    background: #0056b3;
+}

@@ -19,15 +19,15 @@ const ThemeSelection = ({ onSelectTheme }) => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>Select a Resume Theme</h1>
       {themes.map(theme => (
-        <button key={theme.id} onClick={() => onSelectTheme(theme)}>
-          {theme.name}
-        </button>
+        <>
+             <img src={theme.imageUrl} alt={theme.name} width="200px" style={{padding: "10px"}} onClick={() => onSelectTheme(theme)}/>
+        </>
       ))}
       <button onClick={() => navigate('/')}>Go Home</button> {/* Home Button */}
-    </div>
+    </>
   );
 };
 

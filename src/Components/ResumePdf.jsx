@@ -1,11 +1,11 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-// Define styles for the PDF document
 const styles = StyleSheet.create({
   page: {
     padding: 20,
     fontFamily: 'Helvetica',
+    fontSize: 12,
   },
   header: {
     fontSize: 24,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ResumePDF = ({ formData }) => {
+const ResumePdf = ({ formData }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -89,7 +89,7 @@ const ResumePDF = ({ formData }) => {
             <Text style={styles.sectionTitle}>Projects</Text>
             {formData.projects.map((proj, index) => (
               <View key={index} style={{ marginBottom: 10 }}>
-                <Text style={styles.experienceTitle}>{proj.title}</Text>
+                <Text style ={styles.experienceTitle}>{proj.title}</Text>
                 <Text style={styles.text}>{proj.description}</Text>
               </View>
             ))}
@@ -100,4 +100,4 @@ const ResumePDF = ({ formData }) => {
   );
 };
 
-export default ResumePDF;
+export default ResumePdf;

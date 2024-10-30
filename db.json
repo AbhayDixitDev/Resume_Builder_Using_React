@@ -1,7 +1,24 @@
 {
     "themes": [
-      { "id": 1, "name": "Modern" },
-      { "id": 2, "name": "Classic" },
-      { "id": 3, "name": "Creative" }
+      {
+        "id": 1,
+        "name": "Modern",
+        "imageUrl": "https://www.resumehelp.com/wp-content/uploads/2022/11/Student-Resume-Example-RH-1-min.png"
+      },
+      {
+        "id": 2,
+        "name": "Classic",
+        "imageUrl": "https://resumegenius.com/wp-content/uploads/first-year-college-student-resume-example-template.png?w=1356"
+      },
+      {
+        "id": 3,
+        "name": "Creative",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi3ogptQLnw9pFUVdqL1jAMRoVQ9iqwG8pdw&s"
+      },
+      {
+        "id": 4,
+        "name": "Professional",
+        "imageUrl": "https://d1xn1bcogdo8ve.cloudfront.net/591/image.png"
+      }
     ]
   }

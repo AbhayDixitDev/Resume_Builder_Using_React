@@ -1,14 +1,14 @@
 import React from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import ResumePdf from './ResumePdf'; // Ensure this component is defined properly
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import ResumePdf from './ResumePdf';
+import { useNavigate } from 'react-router-dom';
 
-const ResumePreview = ({ formData }) => {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+const ResumePreview = ({ formData, selectedTheme }) => {
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Resume Preview</h1>
+    <div className="resume-preview" style={{ backgroundColor: selectedTheme.backgroundColor, color: selectedTheme.textColor }}>
+      <h1 style={{ color: selectedTheme.headerColor }}>Resume Preview</h1>
       <div>
         <h2>{formData.name}</h2>
         <p>{formData.email}</p>
@@ -48,12 +48,16 @@ const ResumePreview = ({ formData }) => {
           </div>
         ))}
       </div>
-
       <PDFDownloadLink document={<ResumePdf formData={formData} />} fileName="resume.pdf">
-        {({ loading }) => (loading ? 'Loading document...' : 'Download PDF')}
+        {({ blob, url, loading, error }) =>
+          loading ? (
+            'Loading document...'
+          ) : (
+            <button>Download PDF</button>
+          )
+        }
       </PDFDownloadLink>
-
-      <button onClick={() => navigate('/')}>Go Home</button> {/* Home Button */}
+      <button onClick={() => navigate('/edit')}>Edit Resume</button>
     </div>
   );
 };
