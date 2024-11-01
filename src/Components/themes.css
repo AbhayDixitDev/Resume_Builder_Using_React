@@ -1,0 +1,33 @@
+/* themes.css */
+
+/* Modern Theme */
+:root {
+    --background-color-modern: #f0f0f0;
+    --text-color-modern: #333;
+    --header-color-modern: #00698f;
+    --link-color-modern: #0066cc;
+  }
+  
+  /* Classic Theme */
+  :root {
+    --background-color-classic: #fff;
+    --text-color-classic: #444;
+    --header-color-classic: #008000;
+    --link-color-classic: #006400;
+  }
+  
+  /* Creative Theme */
+  :root {
+    --background-color-creative: #f7f7f7;
+    --text-color-creative: #555;
+    --header-color-creative: #ff69b4;
+    --link-color-creative: #ff1493;
+  }
+  
+  /* Professional Theme */
+  :root {
+    --background-color-professional: #e7e7e7;
+    --text-color-professional: #666;
+    --header-color-professional: #3498db;
+    --link-color-professional: #2980b9;
+  }

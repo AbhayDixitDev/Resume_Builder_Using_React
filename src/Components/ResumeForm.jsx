@@ -64,7 +64,7 @@ const ResumeForm = ({ selectedTheme, onSubmit }) => {
     <div className="container">
       <h1>{selectedTheme?.name} Resume Form</h1>
       <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Name" onChange={handleChange} required />
+        <input name="name" placeholder="Name" onChange={handleChange} required  style={{display:"inline !important"}}/>
         <input name="email" placeholder="Email" onChange={handleChange} required />
         <input name="phone" placeholder="Phone" onChange={handleChange} required />
         <input name="city" placeholder="City" onChange={handleChange} />
@@ -72,7 +72,8 @@ const ResumeForm = ({ selectedTheme, onSubmit }) => {
         <input name="skills" placeholder="Skills (comma separated)" onChange={handleChange} />
         <input name="languages" placeholder="Languages (comma separated)" onChange={handleChange} />
         <input name="linkedin" placeholder="LinkedIn URL" onChange={handleChange} />
-        <input name=" github" placeholder="GitHub URL" onChange={handleChange} />
+        <input name="github" placeholder="GitHub URL" onChange={handleChange} />
+
         <h2>Experience</h2>
         {formData.experience.map((experience, index) => (
           <div key={index}>
@@ -80,26 +81,29 @@ const ResumeForm = ({ selectedTheme, onSubmit }) => {
             <input name="company" placeholder="Company" onChange={(e) => handleExperienceChange(index, e)} required />
             <input name="duration" placeholder="Duration" onChange={(e) => handleExperienceChange(index, e)} required />
             <textarea name="description" placeholder="Description" onChange={(e) => handleExperienceChange(index, e)} />
-            <button onClick={addExperience}>Add Experience</button>
           </div>
         ))}
+        <button type="button" onClick={addExperience}>Add Experience</button>
+
         <h2>Education</h2>
         {formData.education.map((education, index) => (
           <div key={index}>
-            <input name="degree" placeholder="Degree" onChange={(e) => handleEducationChange(index, e)} required />
+                        <input name="degree" placeholder="Degree" onChange={(e) => handleEducationChange(index, e)} required />
             <input name="institution" placeholder="Institution" onChange={(e) => handleEducationChange(index, e)} required />
             <input name="year" placeholder="Year" onChange={(e) => handleEducationChange(index, e)} required />
-            <button onClick={addEducation}>Add Education</button>
           </div>
         ))}
+        <button type="button" onClick={addEducation}>Add Education</button>
+
         <h2>Projects</h2>
         {formData.projects.map((project, index) => (
           <div key={index}>
             <input name="title" placeholder="Title" onChange={(e) => handleProjectChange(index, e)} required />
             <textarea name="description" placeholder="Description" onChange={(e) => handleProjectChange(index, e)} />
-            <button onClick={addProject}>Add Project</button>
           </div>
         ))}
+        <button type="button" onClick={addProject}>Add Project</button>
+        <br />
         <button type="submit">Submit</button>
       </form>
     </div>

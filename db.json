@@ -1,24 +1,36 @@
 {
-    "themes": [
-      {
-        "id": 1,
-        "name": "Modern",
-        "imageUrl": "https://www.resumehelp.com/wp-content/uploads/2022/11/Student-Resume-Example-RH-1-min.png"
-      },
-      {
-        "id": 2,
-        "name": "Classic",
-        "imageUrl": "https://resumegenius.com/wp-content/uploads/first-year-college-student-resume-example-template.png?w=1356"
-      },
-      {
-        "id": 3,
-        "name": "Creative",
-        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi3ogptQLnw9pFUVdqL1jAMRoVQ9iqwG8pdw&s"
-      },
-      {
-        "id": 4,
-        "name": "Professional",
-        "imageUrl": "https://d1xn1bcogdo8ve.cloudfront.net/591/image.png"
-      }
-    ]
-  }
+  "themes": [
+    {
+      "id": 1,
+      "name": "Modern",
+      "imageUrl": "https://www.resumehelp.com/wp-content/uploads/2022/11/Student-Resume-Example-RH-1-min.png",
+      "backgroundColor": "#f0f0f0",
+      "textColor": "#333333",
+      "linkColor": "#0066cc"
+    },
+    {
+      "id": 2,
+      "name": "Classic",
+      "imageUrl": "https://resumegenius.com/wp-content/uploads/first-year-college-student-resume-example-template.png?w=1356",
+      "backgroundColor": "#ffffff",
+      "textColor": "#444444",
+      "linkColor": "#008000"
+    },
+    {
+      "id": 3,
+      "name": "Creative",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi3ogptQLnw9pFUVdqL1jAMRoVQ9iqwG8pdw&s",
+      "backgroundColor": "#f7f7f7",
+      "textColor": "#555555",
+      "linkColor": "#ff1493"
+    },
+    {
+      "id": 4,
+      "name": "Professional",
+      "imageUrl": "https://d1xn1bcogdo8ve.cloudfront.net/591/image.png",
+      "backgroundColor": "#e7e7e7",
+      "textColor": "#666666",
+      "linkColor": "#2980b9"
+    }
+  ]
+}

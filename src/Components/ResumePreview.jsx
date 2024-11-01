@@ -1,63 +1,101 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import ResumePdf from './ResumePdf';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ResumePreview = ({ formData, selectedTheme }) => {
+  const [themes, setThemes] = useState([]);
   const navigate = useNavigate();
 
+  // Fetch themes from db.json
+  useEffect(() => {
+    const fetchThemes = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/themes'); // Adjust the path as necessary
+        setThemes(response.data); // Use response.data directly
+      } catch (error) {
+        console.error('Error fetching themes:', error);
+      }
+    };
+
+    fetchThemes();
+  }, []);
+
+  // Find the selected theme
+  const theme = selectedTheme && themes.find(t => t.name.toLowerCase() === selectedTheme.name.toLowerCase()) || themes[0];
+
+  // Check if theme is loaded
+  if (!theme) {
+    return <div>Loading theme...</div>; // Loading state
+  }
+
   return (
-    <div className="resume-preview" style={{ backgroundColor: selectedTheme.backgroundColor, color: selectedTheme.textColor }}>
-      <h1 style={{ color: selectedTheme.headerColor }}>Resume Preview</h1>
-      <div>
-        <h2>{formData.name}</h2>
-        <p>{formData.email}</p>
-        <p>{formData.phone}</p>
-        <p>{formData.city}</p>
-        <h3>Summary/Objective</h3>
-        <p>{formData.summary}</p>
-        <h3>Skills</h3>
-        <p>{formData.skills.split(',').map(skill => skill.trim()).join(', ')}</p>
-        <h3>Languages</h3>
-        <p>{formData.languages.split(',').map(language => language.trim()).join(', ')}</p>
-        <h3>Links</h3>
-        <p>LinkedIn: <a href={formData.linkedin} target="_blank" rel="noopener noreferrer">{formData.linkedin}</a></p>
-        <p>GitHub: <a href={formData.github} target="_blank" rel="noopener noreferrer">{formData.github}</a></p>
-
-        <h3>Experience</h3>
-        {formData.experience.map((exp, index) => (
-          <div key={index}>
-            <h4>{exp.title} at {exp.company}</h4>
-            <p>{exp.duration}</p>
-            <p>{exp.description}</p>
-          </div>
-        ))}
-
-        <h3>Education</h3>
-        {formData.education.map((edu, index) => (
-          <div key={index}>
-            <h4>{edu.degree} from {edu.institution} ({edu.year})</h4>
-          </div>
-        ))}
-
-        <h3>Projects</h3>
-        {formData.projects.map((proj, index) => (
-          <div key={index}>
-            <h4>{proj.title}</h4>
-            <p>{proj.description}</p>
-          </div>
-        ))}
+    <div
+      className="resume-preview"
+      style={{
+        backgroundColor: theme.backgroundColor,
+        color: theme.textColor,
+        fontFamily: 'Arial, sans-serif', // Add a standard font
+        padding: '20px',
+      }}
+    >
+      <h1 style={{ color: theme.textColor, textAlign: 'center', marginBottom: '20px' }}>{formData.name}</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <div>
+          <p style={{ margin: 0 }}>{formData.email}</p>
+          <p style={{ margin: 0 }}>{formData.phone}</p>
+          <p style={{ margin: 0 }}>{formData.city}</p>
+        </div>
+        <div>
+          <p style={{ margin: 0 }}>
+            LinkedIn: <a href={formData.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: theme.linkColor }}>{formData.linkedin}</a>
+          </p>
+          <p style={{ margin: 0 }}>
+            GitHub: <a href={formData.github} target="_blank" rel="noopener noreferrer" style={{ color: theme.linkColor }}>{formData.github}</a>
+          </p>
+        </div>
       </div>
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Summary/Objective</h2>
+      <p style={{ marginBottom: '20px' }}>{formData.summary}</p>
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Skills</h2>
+      <p style={{ marginBottom: '20px' }}>{formData.skills.split(',').map(skill => skill.trim()).join(', ')}</p>
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Languages</h2>
+      <p style={{ marginBottom: '20px' }}>{formData.languages.split(',').map(language => language.trim()).join(', ')}</p>
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Experience</h2>
+      {formData.experience.map((exp, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3 style={{ color: theme.textColor, marginBottom: '10px' }}>{exp.title} at {exp.company}</h3>
+          <p style={{ marginBottom: '10px' }}>{exp.duration}</p>
+          <p style={{ marginBottom: '10px' }}>{exp.description}</p>
+        </div>
+      ))}
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Education</h2>
+      {formData.education.map((edu, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3 style={{ color: theme.textColor, marginBottom: '10px' }}>{edu.degree} from {edu.institution} ({edu.year})</h3>
+        </div>
+      ))}
+
+      <h2 style={{ color: theme.textColor, marginBottom: '10px' }}>Projects</h2>
+      {formData.projects.map((proj, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3 style={{ color: theme.textColor, marginBottom: '10px' }}>{proj.title}</h3>
+          <p style={{ marginBottom: '10px' }}>{proj.description}</p>
+        </div>
+      ))}
+
       <PDFDownloadLink document={<ResumePdf formData={formData} />} fileName="resume.pdf">
         {({ blob, url, loading, error }) =>
-          loading ? (
-            'Loading document...'
-          ) : (
-            <button>Download PDF</button>
-          )
+          loading ? 'Loading document...' : 'Download PDF'
         }
       </PDFDownloadLink>
-      <button onClick={() => navigate('/edit')}>Edit Resume</button>
+      <button onClick={() => navigate('/form')}>Edit Resume</button>
     </div>
   );
 };
